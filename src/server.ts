@@ -1,9 +1,11 @@
-import express, { Request, Response } from 'express'
+import express, { Response } from 'express'
 
 const app = express()
 
-app.get('/', (req: Request, res: Response) => {
+const PORT = process.env.PORT || 5000
+
+app.get('/', (res: Response) => {
   res.send('hello')
 })
 
-app.listen(5000, () => console.log('Sever running'))
+app.listen(PORT, () => console.log(`Sever running on port ${PORT}`))
