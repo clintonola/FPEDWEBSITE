@@ -1,2 +1,3 @@
 # FPEDWEBSITE
- class project for fped
+
+Class Group project for Fped website. Special topics class
