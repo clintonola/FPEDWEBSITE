@@ -4,10 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
+    />
     <title>Document</title>
   </head>
   <body>
     <h1>DISPLAY</h1>
     <p>Hello <%= user %></p>
+    <div class="container">
+      <div id="data">
+        <input type="text" id="name" placeholder="Enter Link Name" />
+        <input type="url" id="link" placeholder="Enter Link" />
+        <button>Add</button>
+      </div>
+      <table>
+       <thead>
+        <tr>
+         <th>Name</th>
+         <th>Link</th>
+       </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>Vcenter</td>
+         <td><a href=https://binarypiano.com>link</a></td>
+       </tr>
+       <tr>
+         <td>Portal</td>
+         <td><a href=https://binarypiano.com>link</a></td>
+       </tr>
+       <tr>
+         <td>ONEFS</td>
+         <td><a href=https://binarypiano.com>link</a></td>
+       </tr>
+       </tbody>
+      </table>
+      <button>Delete</button>
+      <button>Update</button>
+      <a href="/users/logout">Logout</a>
+    </div>
   </body>
 </html>
