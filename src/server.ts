@@ -92,7 +92,6 @@ app.post('/users/register', async (req: Request, res: Response) => {
   } else {
     //passed validation
     let hashedPassword: string = await bcrypt.hash(body.password, 10)
-    console.log(hashedPassword)
 
     pool.query(
       `SELECT * FROM users
