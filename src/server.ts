@@ -37,20 +37,35 @@ app.use(passport.session())
 
 app.use(flash())
 
+//routes
 app.get('/', (_req: Request, res: Response) => {
   res.render('index')
 })
 
-app.get('/users/register', (_req: Request, res: Response) => {
-  res.render('register')
-})
+app.get(
+  '/users/register',
+  checkAuthenticated,
+  (_req: Request, res: Response) => {
+    res.render('register')
+  }
+)
 
-app.get('/users/login', (_req: Request, res: Response) => {
+app.get('/users/login', checkAuthenticated, (_req: Request, res: Response) => {
   res.render('login')
 })
 
-app.get('/users/display', (req: any, res: Response) => {
+app.get('/users/display', checkNotAuthenticated, (req: any, res: Response) => {
   res.render('display', { user: req.user.name })
+})
+
+app.get('/users/logout', (req: Request, res: Response) => {
+  req.logOut(function (err) {
+    if (err) {
+      return err
+    }
+    req.flash('success_msg', 'You are logged out')
+    res.redirect('/users/login')
+  })
 })
 
 app.post('/users/register', async (req: Request, res: Response) => {
@@ -121,5 +136,20 @@ app.post(
     failureFlash: true,
   })
 )
+
+function checkAuthenticated(req: Request, res: Response, next: any) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/users/display')
+  }
+
+  next()
+}
+
+function checkNotAuthenticated(req: Request, res: Response, next: any) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.redirect('/users/login')
+}
 
 app.listen(PORT, () => console.log(`Sever running on port ${PORT}`))

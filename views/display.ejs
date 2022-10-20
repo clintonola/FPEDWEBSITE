@@ -12,7 +12,7 @@
   </head>
   <body>
     <h1>DISPLAY</h1>
-    <p>Hello <%= user %></p>
+    <p>Hello <%= user.charAt(0).toUpperCase() + user.slice(1)%></p>
     <div class="container">
       <div id="data">
         <input type="text" id="name" placeholder="Enter Link Name" />
