@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
-    "build": "tsc -p ."
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
     "express-session": "^1.17.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
